@@ -1,8 +1,0 @@
-/target/*
-.settings/*
-.*
-/target/
-/src/main/resources/META-INF/spring/application.properties
-
-#comment
-
