@@ -4,6 +4,6 @@ target/**
 .project
 .springBeans
 .classpath
-src/main/resources/META-INF/spring/application.properties
+/src/main/resources/META-INF/spring/application.properties
 
 #comment
