@@ -51,18 +51,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${interviewList}" var="interview">
+							<c:forEach items="${interviewRoundList}" var="irs">
 								<tr>
 									<td><c:out value="++${count}" /></td>
-									<td><c:out value="${interview.vc.name}" /></td>
-									<td><c:out value="${interview.marketing.name}" /></td>
-									<td><c:out value="${interview.vendor.name}" /></td>
-									<td><c:out value="${interview.client.name}" /></td>
-									<td><c:out value="${interview.technology.name}" /></td>
-									<td><c:out value="${interview.candidate.firstName}" /></td>
-									<td><c:out value="${interview.marketing.name}" /></td>
-									<td><c:out value="${interview.marketing.name}" /></td>
-									<td><c:out value="${interview.marketing.name}" /></td>
+									<td><c:out value="${irs.interview.vc.name}" /></td>
+									<td><c:out value="${irs.interview.marketing.name}" /></td>
+									<td><c:out value="${irs.interview.vendor.name}" /></td>
+									<td><c:out value="${irs.interview.client.name}" /></td>
+									<td><c:out value="${irs.interview.technology.name}" /></td>
+									<td><c:out value="${irs.interview.candidate.firstName}" /></td>
+									<td><c:out value="${irs.round.name}" /></td>
+									<td><c:out value="${irs.interviewStatus}" /></td>
+									<td><c:out value="${irs.interviewType.type}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>

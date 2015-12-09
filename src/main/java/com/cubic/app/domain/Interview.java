@@ -44,7 +44,7 @@ public class Interview implements Serializable {
 	@OneToOne(cascade = CascadeType.MERGE)
 	private Technology technology;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "interview")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "interview")
 	// @JoinTable(name="INTERVIEW_AND_ROUNDS", joinColumns =
 	// {@JoinColumn(name="interview_id",referencedColumnName="id")},
 	// inverseJoinColumns={@JoinColumn(name="interview_round_id",
