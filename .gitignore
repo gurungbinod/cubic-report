@@ -3,7 +3,7 @@
 /src/main/resources/jdbc.properties
 .*
 /target/
-/src/main/resources/META-INF/spring/application.properties
+src/main/resources/META-INF/spring/application.properties
 
 #comment
 
