@@ -1,4 +1,5 @@
-/target/**
-
-*.class
-.settings/**
+/target/*
+.settings/*
+.project
+.springBeans
+.classpath
