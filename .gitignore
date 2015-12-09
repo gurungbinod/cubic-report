@@ -1,9 +1,8 @@
-/target/**
-target/**
+/target/*
 .settings/*
-.project
-.springBeans
-.classpath
+/src/main/resources/jdbc.properties
+.*
+/target/
 /src/main/resources/META-INF/spring/application.properties
 
 #comment
