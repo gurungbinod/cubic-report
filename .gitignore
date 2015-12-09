@@ -4,9 +4,4 @@ target/**
 .project
 .springBeans
 .classpath
-<<<<<<< HEAD
-src/main/resources/META-INF/spring/application.properties
-=======
-/src/main/resources/META-INF/spring/application.properties
-src/main/resources/META-INF/spring/application.properties
->>>>>>> 0ef15a8163b795ae78d4ebdf3bbf1b1f251fbe03
+#src/main/resources/META-INF/spring/application.properties
