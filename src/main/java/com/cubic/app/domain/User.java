@@ -10,8 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Value;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "USER")
@@ -29,6 +32,7 @@ public class User implements Serializable {
 	private String phone;
 	@Column(unique=true)
 	private String email;
+	@JsonIgnore
 	private String password;
 	@Column(name = "enabled", columnDefinition = "Boolean default '1'")
 	private boolean enabled;

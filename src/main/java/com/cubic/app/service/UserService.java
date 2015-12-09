@@ -12,4 +12,6 @@ public interface UserService {
 	User findById(int id);
 	List<User> findByRole(Role role);
 	void save(User u);
+	User getCurrentUserInfo();
+	public boolean hasRole(String role);
 }

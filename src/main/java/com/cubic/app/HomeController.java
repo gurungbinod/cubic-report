@@ -1,17 +1,24 @@
 package com.cubic.app;
 
+import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.cubic.app.domain.User;
+import com.cubic.app.service.InterviewService;
+import com.cubic.app.service.UserService;
 
 /**
  * Handles requests for the application home page.
@@ -24,60 +31,32 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private InterviewService interviewService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
+	public String home(){
+		//logger.info("Principal::"+principal.getName());
 		return "login";
 	}
 	
-	@RequestMapping("/secure/home")
-	public String home2(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}. This is secured..", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+		logger.info("Welcome.. Login page displayed..!!");
+		//return "redirect:static/index.html#dashboard";
+		return "login";
 	}
 	
-	@RequestMapping("/admin/")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public String home3(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}. This is secured..", locale);
+	@RequestMapping(value="/secure/dashboard", method=RequestMethod.GET)
+	public String dashboard(Model model) {
+		logger.info("Load Dashboard");
+		System.out.println("Interview List:: "+interviewService.getInterviewList());
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
+		model.addAttribute("interviewList", interviewService.getInterviewList());
+		return "dashboard";
 	}
-	
-	
-	/*@RequestMapping("/login")
-	public String loginPage() {
-		logger.info("Login Page..");
-		return "login.htm";
-	}*/
-	
-	/*@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String authenticate(@RequestParam("username") String username) {
-		return username;
-		
-	}*/
 	
 }

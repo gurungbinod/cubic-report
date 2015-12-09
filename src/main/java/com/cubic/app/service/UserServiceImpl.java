@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	private boolean hasRole(String role) {
+	public boolean hasRole(String role) {
 		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder
 				.getContext().getAuthentication().getAuthorities();
 		boolean hasRole = false;
@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
 		return hasRole;
 	}
 	
-	private User getUserInfo() {
+	public User getCurrentUserInfo() {
 		User user = (User)SecurityContextHolder.getContext().
 				   getAuthentication().getPrincipal();
 		return user;

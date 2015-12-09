@@ -41,8 +41,7 @@ public class InterviewRound implements Serializable {
 	@OneToOne
 	private InterviewType interviewType;
 	
-	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.LAZY)
-	@JsonIgnore
+	@ManyToOne(cascade=CascadeType.MERGE, fetch = FetchType.EAGER)
 	private Interview interview;
 	
 	public InterviewRound() {}

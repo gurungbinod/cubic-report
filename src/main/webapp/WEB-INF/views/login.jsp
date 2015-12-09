@@ -16,17 +16,17 @@
 <body>
 
 	<div id="login_container">
-		<form id="formLogin">
+		<form id="formLogin" action="j_spring_security_check" method="post">
 			<h2>User Login</h2>
 			<div class="form-group">
 				<label for="email">Email</label> <input
 					type="text" class="form-control" id="email"
-					placeholder="Email" name="j_username">
+					placeholder="Email" name="j_username" value="gurung.binod@gmail.com">
 			</div>
 			<div class="form-group">
 				<label for="password">Password</label> <input
 					type="password" class="form-control" id="password"
-					placeholder="Password" name="j_password">
+					placeholder="Password" name="j_password" value="password">
 			</div>
 			<div class="checkbox">
 				<label> <input type="checkbox" name="remember"> Remember Me
@@ -48,7 +48,7 @@
 	<script type="text/javascript">
 	
 	$(function (){
-		$(document).on("submit","#formLogin",function (e) {
+		/* $(document).on("submit","#formLogin",function (e) {
 			e.preventDefault();
 			var data = $(this).serialize();
 			$.ajax({
@@ -58,15 +58,18 @@
 				dataType:"json",
 			})
 			.done(function (data) {
+				
+				console.log(data);
 				if (data.status == true) {
 					alert("login successful");
+					window.location = "<c:url value='/secure/dashboard' />";
 				} else {
 					alert("Bad Credentials");
 				}
 			})
 			.error(function () {
 				console.log('ERROR::');
-			});
+			}); */
 		})
 	});
 	

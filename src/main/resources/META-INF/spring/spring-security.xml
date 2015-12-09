@@ -8,17 +8,20 @@
 
 	<global-method-security pre-post-annotations="enabled" />
 	<http>
-		<form-login />
-		<logout logout-url="/logout" logout-success-url="/"
+		<form-login login-processing-url="/j_spring_security_check" login-page="/login" default-target-url="/secure/dashboard"
+			always-use-default-target="true" authentication-failure-url="/login?error" />
+		<logout logout-url="/logout" logout-success-url="/login"
 			invalidate-session="true" />
 		<remember-me />
 		<intercept-url pattern="/resources/**" filters="none" />
 		<intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/secure/**"
 			access="ROLE_ADMIN, ROLE_VC, ROLE_MARKETING" />
-		<intercept-url pattern="/secure/admin/**"
-			access="ROLE_ADMIN, ROLE_VC, ROLE_MARKETING" />
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<session-management
+			invalid-session-url="/" session-authentication-error-url="/login">
+		</session-management>
 	</http>
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider>
@@ -37,6 +40,6 @@
 	<!-- handler for authorization failure. Will redirect to the login page. -->
 	<beans:bean id="myAccessDeniedHandler"
 		class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
-		<beans:property name="errorPage" value="/index" />
+		<beans:property name="errorPage" value="/" />
 	</beans:bean>
 </beans:beans>

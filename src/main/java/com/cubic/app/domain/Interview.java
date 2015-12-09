@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Interview implements Serializable {
 	/**
@@ -42,11 +44,12 @@ public class Interview implements Serializable {
 	@OneToOne(cascade = CascadeType.MERGE)
 	private Technology technology;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "interview")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "interview")
 	// @JoinTable(name="INTERVIEW_AND_ROUNDS", joinColumns =
 	// {@JoinColumn(name="interview_id",referencedColumnName="id")},
 	// inverseJoinColumns={@JoinColumn(name="interview_round_id",
 	// referencedColumnName="id")})
+	@JsonIgnore
 	private List<InterviewRound> interviewRound;
 
 	public Interview() {
