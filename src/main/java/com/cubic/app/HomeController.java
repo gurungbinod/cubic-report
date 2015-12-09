@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cubic.app.domain.User;
-import com.cubic.app.service.InterviewRoundService;
 import com.cubic.app.service.InterviewService;
 import com.cubic.app.service.UserService;
 
@@ -38,9 +37,6 @@ public class HomeController {
 	@Autowired
 	private InterviewService interviewService;
 	
-	@Autowired
-	private InterviewRoundService irs;
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(){
 		//logger.info("Principal::"+principal.getName());
@@ -59,7 +55,7 @@ public class HomeController {
 		logger.info("Load Dashboard");
 		System.out.println("Interview List:: "+interviewService.getInterviewList());
 		
-		model.addAttribute("interviewRoundList", irs.getInterviewRoundsList());
+		model.addAttribute("interviewList", interviewService.getInterviewList());
 		return "dashboard";
 	}
 	
